@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Workoutlog</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Dont have an account?<u>Sign_Up</u></string>
+    <string name="signup">SignUP</string>
+    <string name="email">Email</string>
+    <string name="confirmPassword">confirmPassword</string>
+    <string name="lastname">Lastname</string>
+    <string name="Login">Already have an existing account?<u>Login</u></string>
+    <string name="firstname">Firstname</string>
+    <string name="profile">profile</string>
+    <string name="track">track</string>
+    <string name="plan">track</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
