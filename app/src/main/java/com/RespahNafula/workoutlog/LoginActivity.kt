@@ -1,43 +1,36 @@
 package com.RespahNafula.workoutlog
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
 import android.widget.TextView
+import com.RespahNafula.workoutlog.databinding.ActivityLoginBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : AppCompatActivity() {
-     lateinit var btnLogin: Button
-     lateinit var tilEmail: TextInputLayout
-     lateinit var etEmail: TextInputEditText
-     lateinit var tilPassword: TextInputLayout
-     lateinit var etPassword: TextInputEditText
-     lateinit var tvSignUp:TextView
-
+    lateinit var binding:ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding=ActivityLoginBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(binding.root)
+        castViews()
 
 
-
-        btnLogin=findViewById(R.id.btnLogin)
-        tilPassword = findViewById(R.id.tilPassword)
-        tilEmail = findViewById(R.id.tilEmail)
-        etPassword = findViewById(R.id.etPassword)
-        etEmail = findViewById(R.id.etEmail)
-        tvSignUp= findViewById(R.id.tvLogin)
-        btnLogin.setOnClickListener {
+        }
+       fun castViews(){
+          binding.btnLogin.setOnClickListener {
             validatelogin()
         }
 
-        tvSignUp.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
             val intent=Intent(this,SignupActivity::class.java)
             startActivity(intent)
         }
-        btnLogin.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
             validatelogin()
             startActivity(Intent(this,HomeActivity::class.java))
         }
@@ -45,24 +38,24 @@ class LoginActivity : AppCompatActivity() {
 
      fun validatelogin() {
         var error = false
-        tilEmail.error = null
-        tilPassword.error = null
+        binding.tilEmail.error = null
+        binding.tilPassword.error = null
 
-        val email = etEmail.text.toString()
+        val email =binding.etEmail.toString()
         if (email.isBlank()) {
-            tilEmail.error = "Email is required"
+            binding.etEmail.error = "Email is required"
             error = true
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            tilEmail.error="Not a valid email address"
+            binding.tilEmail.error="Not a valid email address"
             error=true
         }
-        val password = etPassword.text.toString()
+        val password =binding.etPassword.text.toString()
         if (password.isBlank()) {
-            tilPassword.error = "password is required"
+            binding.etPassword.error = "password is required"
             error = true
         }
-         if (error!=true){}
+         if (!error){}
 
         }
     }
